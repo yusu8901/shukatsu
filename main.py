@@ -64,6 +64,13 @@ st.set_page_config(
 
 st.title("就活チャットボット")
 
+if st.session_state["conversation_id"] is None and not st.session_state["chat_history"]:
+    default_message = "開始"
+    conversation_id, response = start_conversation(default_message)
+    if conversation_id:
+        st.session_state["conversation_id"] = conversation_id
+        st.session_state["chat_history"].append({"role": "assistant", "content": response})
+
 # チャット履歴を表示
 for message in st.session_state["chat_history"]:
     with st.chat_message(message["role"]):
@@ -89,7 +96,7 @@ if prompt := st.chat_input("ここに入力してください"):
             st.error("取得したデータがJSONではありませんでした。")
             data = {}
 
-        st.title("カスタムバー可視化例")
+        st.title("分析結果")
 
         # dataが想定の構造である場合のみ可視化
         if isinstance(data, dict):
