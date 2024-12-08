@@ -58,11 +58,11 @@ def continue_conversation(conversation_id: str, query: str):
 
 # Streamlitのページ設定
 st.set_page_config(
-    page_title="Chat with Dify Bot",
+    page_title="就活チャットボット",
     page_icon="🤖"
 )
 
-st.title("Chat with Dify Bot")
+st.title("就活チャットボット")
 
 # チャット履歴を表示
 for message in st.session_state["chat_history"]:
