@@ -63,6 +63,8 @@ st.set_page_config(
 )
 
 st.title("就活チャットボット")
+st.markdown("会話を終了したい場合「終了」と入力")
+st.markdown("チャットボットが会話を終了するか、ユーザーが「終了」と入力すると、結果出力")
 
 if st.session_state["conversation_id"] is None and not st.session_state["chat_history"]:
     default_message = "開始"
